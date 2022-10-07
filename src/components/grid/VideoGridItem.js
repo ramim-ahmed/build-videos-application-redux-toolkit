@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 const VideoGridItem = ({ video = {} }) => {
     const { id, thumbnail, title, author, avatar, date, views, duration } = video;
     return (
@@ -42,7 +41,7 @@ const VideoGridItem = ({ video = {} }) => {
                             </p>
                         </Link>
                         <Link
-                            className="text-gray-400 text-xs mt-2 hover:text-gray-600"
+                            className="cursor-pointer text-gray-400 text-xs mt-2 hover:text-gray-600"
                             to={`/videos/${id}`}
                         >
                             {author}

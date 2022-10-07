@@ -10,7 +10,8 @@ const RelatedVideos = ({ tags, currentId }) => {
 
     useEffect(() => {
         dispatch(fetchRelatedVideos({ tags, id: currentId }))
-    }, [dispatch, tags, currentId]);
+    }, [dispatch, tags, currentId,]);
+
     // decide what to do render
     let content;
 

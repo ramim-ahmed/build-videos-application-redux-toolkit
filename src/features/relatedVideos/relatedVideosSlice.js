@@ -11,8 +11,8 @@ const initialState = {
 };
 
 // create async thunk
-export const fetchRelatedVideos = createAsyncThunk('relatedVideos/fetchVideos', async ({ tags, id }) => {
-    const data = await getRelatedVideos({ tags, id });
+export const fetchRelatedVideos = createAsyncThunk('relatedVideos/fetchVideos', async ({ id, tags, author }) => {
+    const data = await getRelatedVideos({ id, tags, author });
     return data;
 })
 
@@ -20,6 +20,11 @@ export const fetchRelatedVideos = createAsyncThunk('relatedVideos/fetchVideos', 
 const relatedVideosSlice = createSlice({
     name: 'relatedVideos',
     initialState,
+    reducers: {
+        authorRelatedVideos: (state) => {
+            state.authorWise = !state.authorWise;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchRelatedVideos.pending, (state) => {
@@ -41,3 +46,4 @@ const relatedVideosSlice = createSlice({
 })
 
 export default relatedVideosSlice.reducer;
+export const { authorRelatedVideos } = relatedVideosSlice.actions;

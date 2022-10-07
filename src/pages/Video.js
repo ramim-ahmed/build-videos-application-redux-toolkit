@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Player from '../components/descriptions/Player'
 import VideoDescrption from '../components/descriptions/VideoDescrption'
-import Footer from '../components/footer/Footer'
 import RelatedVideos from '../components/list/RelatedVideos'
-import Navbar from '../components/navbar/Navbar'
 import Loading from '../components/ui/Loading'
 import { fetchVideo } from '../features/video/videoSlice'
 
@@ -18,7 +16,7 @@ const Video = () => {
         dispatch(fetchVideo(videoId))
     }, [dispatch, videoId]);
 
-    const { id, tags, link, title, description, date } = video || {};
+    const { id, tags, link, title, description, date, author } = video || {};
 
     // decide what to do render
     let content;
@@ -41,7 +39,7 @@ const Video = () => {
 
             </div>
 
-            <RelatedVideos currentId={id} tags={tags} />
+            <RelatedVideos currentId={id} tags={tags} author={author} />
 
         </div>
     }

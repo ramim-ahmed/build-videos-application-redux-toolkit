@@ -18,9 +18,12 @@ const tagsFilterSlice = createSlice({
             if (index !== -1) {
                 state.tagsSelection.splice(index, 1)
             }
+        },
+        resetTags: (state) => {
+            state.tagsSelection = []
         }
     }
 });
 
 export default tagsFilterSlice.reducer;
-export const { addSelectionTags, removeSelectionTags } = tagsFilterSlice.actions;
+export const { addSelectionTags, removeSelectionTags, resetTags } = tagsFilterSlice.actions;
